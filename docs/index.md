@@ -34,6 +34,8 @@ fun checkCallWithReceiverAndRenderSignature(functionCall: KtCallExpression): Str
 
 ## Get Started
 
+// TODO
+
 ## Read about Analysis API
 
 - [The Story Behind K2 Mode and How It Works - JetBrains Blog](https://blog.jetbrains.com/idea/2025/04/the-story-behind-k2-mode-and-how-it-works/)
@@ -44,8 +46,9 @@ fun checkCallWithReceiverAndRenderSignature(functionCall: KtCallExpression): Str
 * [Kotlin Dokka](https://github.com/Kotlin/dokka) - Kotlin documentation generator
 * [KSP](https://github.com/google/ksp) - Kotlin Symbol Processing API by Google
 * [Detekt](https://github.com/detekt/detekt) - Static code analysis for Kotlin
-* [Sonar](https://github.com/SonarSource/sonar-kotlin) - SonarSource static analyzer for Kotlin
 * And more
+
+Have a project using **Analysis API**? Contact us to be listed here!
 
 ## Contributing
 

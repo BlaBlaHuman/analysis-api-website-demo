@@ -1,7 +1,7 @@
 [project]
 site_url = "https://www.example.com/"
 site_name = "Kotlin Analysis API"
-site_description = "An official library for analyzing Kotlin code"
+site_description = "Official library for analyzing Kotlin code"
 # site_author = "Your name"
 
 # copyright = "Copyright &copy; 2026 Your name"
@@ -16,7 +16,6 @@ nav = [
         "documentation/index.md",
         "documentation/Fundamentals.md",
         "documentation/Symbols.md",
-        "documentation/Scopes.md",
         "documentation/Types.md",
         "documentation/Annotations.md",
         "documentation/References-And-Calls.md",
