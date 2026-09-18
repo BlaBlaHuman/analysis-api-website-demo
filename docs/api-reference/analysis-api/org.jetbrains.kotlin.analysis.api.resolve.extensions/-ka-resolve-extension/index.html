@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>KaResolveExtension</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>if (window.self !== window.top) document.documentElement.classList.add("framed")</script>
+    <style>
+      html.framed #navigation-wrapper { display: none !important; }
+      html.framed #container { top: 0 !important; }
+
+      /* Sidebar package rows all start with the same four segments (org. jetbrains. kotlin. analysis.), which pushes
+         the meaningful part off the edge. Dokka wraps each segment in its own <span> for line-breaking, so the shared
+         prefix can simply be hidden. `nth-of-type` counts spans only, ignoring the interleaved <wbr> elements, and
+         `data-nesting-level="1"` restricts this to package rows - class and member rows are deeper and unaffected.
+         The untrimmed name stays in the row's aria-label, so screen readers still get the full package. */
+      .toc--part[data-nesting-level="1"] > .toc--row > a.toc--link > span:nth-of-type(-n+4) { display: none; }
+    </style>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    analysis-api
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+2.5.255-SNAPSHOT        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":analysis:analysis-api/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":analysis:analysis-api/main"
+                                       data-filter=":analysis:analysis-api/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    analysis-api
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="analysis-api::org.jetbrains.kotlin.analysis.api.resolve.extensions/KaResolveExtension///PointingToDeclaration//1249159029">
+  <div class="breadcrumbs"><a href="../../../index.html">analysis-api</a><span class="delimiter">/</span><a href="../index.html">org.jetbrains.kotlin.analysis.api.resolve.extensions</a><span class="delimiter">/</span><span class="current">KaResolveExtension</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Ka</span><wbr></wbr><span>Resolve</span><wbr></wbr><span><span>Extension</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">KaResolveExtension</a> : <span data-unresolved-link="com.intellij.openapi/Disposable///PointingToDeclaration/">Disposable</span></div><p class="paragraph">A resolve extension provides additional Kotlin files containing generated declarations, which will be included in the resolution as if they were regular source files in the module.</p><p class="paragraph">Each resolve extension is defined for a specific <a href="../../org.jetbrains.kotlin.analysis.api.projectStructure/-ka-module/index.html">KaModule</a>, which is determined by the <a href="../-ka-resolve-extension-provider/index.html">KaResolveExtensionProvider</a> which creates the resolve extension.</p><p class="paragraph">All member implementations should:</p><ul><li><p class="paragraph">Consider caching the results for subsequent invocations.</p></li><li><p class="paragraph">Be lightweight and avoid building the whole file structure eagerly.</p></li><li><p class="paragraph">Avoid using Kotlin resolution, as these functions are called during session initialization, so Analysis API access is forbidden.</p></li></ul><h3 class="">Lifecycle Management</h3><p class="paragraph">A resolve extension is tied to the lifetime of its module's <a href="../../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">analysis session</a>. It is created by <a href="../-ka-resolve-extension-provider/index.html">KaResolveExtensionProvider</a> during creation of an analysis session, and disposed after the analysis session has been invalidated.</p><p class="paragraph"><a href="index.html">KaResolveExtension</a> implements the <span data-unresolved-link="com.intellij.openapi/Disposable///PointingToDeclaration/">Disposable</span> interface. The resolve extension can then act as a parent disposable, e.g. for a message bus connection.</p><p class="paragraph">You <i>must not</i> implement resolve extensions as module-level services, due to the following reasons:</p><ol><li><p class="paragraph">The IntelliJ platform SDK <a href="https://plugins.jetbrains.com/docs/intellij/plugin-services.html#types">discourages</a> the use of     module-level services due to memory consumption. In particular, resolve extensions implemented as module-level services live longer     than their corresponding analysis session, so the resolve extension would not be garbage collected after its corresponding analysis     session has been invalidated.</p></li><li><p class="paragraph">The module-level service living longer than the analysis session increases the risk of caching invalidated entities in a resolve     extension.</p></li><li><p class="paragraph">Because the resolve extension is a <span data-unresolved-link="com.intellij.openapi/Disposable///PointingToDeclaration/">Disposable</span>, if implemented as a module-level service, the service would be disposed too early     during invalidation of the corresponding analysis session.</p></li></ol><h4 class="tableheader">See also</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-ka-resolve-extension-file/index.html"><span>Ka</span><wbr></wbr><span>Resolve</span><wbr></wbr><span>Extension</span><wbr></wbr><span><span>File</span></span></a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-ka-resolve-extension-provider/index.html"><span>Ka</span><wbr></wbr><span>Resolve</span><wbr></wbr><span>Extension</span><wbr></wbr><span><span>Provider</span></span></a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="51845612%2FConstructors%2F1249159029" anchor-label="KaResolveExtension" id="51845612%2FConstructors%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-resolve-extension.html"><span>Ka</span><wbr></wbr><span>Resolve</span><wbr></wbr><span><span>Extension</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="51845612%2FConstructors%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1148685862%2FFunctions%2F1249159029" anchor-label="dispose" id="1148685862%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dispose.html"><span><span>dispose</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1148685862%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="dispose.html"><span class="token function">dispose</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1746231947%2FFunctions%2F1249159029" anchor-label="getContainedPackages" id="1746231947%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-contained-packages.html"><span>get</span><wbr></wbr><span>Contained</span><wbr></wbr><span><span>Packages</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1746231947%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-contained-packages.html"><span class="token function">getContainedPackages</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the set of packages that are contained in the files provided by <a href="get-kt-files.html">getKtFiles</a>. It should be an exact set of all file packages.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-108182595%2FFunctions%2F1249159029" anchor-label="getKtFiles" id="-108182595%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-kt-files.html"><span>get</span><wbr></wbr><span>Kt</span><wbr></wbr><span><span>Files</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-108182595%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-kt-files.html"><span class="token function">getKtFiles</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-ka-resolve-extension-file/index.html">KaResolveExtensionFile</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the list of files that should be generated for the module. The files should contain valid Kotlin code.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1786182186%2FFunctions%2F1249159029" anchor-label="getShadowedScope" id="-1786182186%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-shadowed-scope.html"><span>get</span><wbr></wbr><span>Shadowed</span><wbr></wbr><span><span>Scope</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1786182186%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-shadowed-scope.html"><span class="token function">getShadowedScope</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.intellij.psi.search/GlobalSearchScope///PointingToDeclaration/">GlobalSearchScope</span></div><div class="brief "><p class="paragraph">Returns the scope of files that should be shadowed by the files provided by <a href="get-kt-files.html">getKtFiles</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>org.jetbrains.kotlin.analysis.api.types</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>if (window.self !== window.top) document.documentElement.classList.add("framed")</script>
+    <style>
+      html.framed #navigation-wrapper { display: none !important; }
+      html.framed #container { top: 0 !important; }
+
+      /* Sidebar package rows all start with the same four segments (org. jetbrains. kotlin. analysis.), which pushes
+         the meaningful part off the edge. Dokka wraps each segment in its own <span> for line-breaking, so the shared
+         prefix can simply be hidden. `nth-of-type` counts spans only, ignoring the interleaved <wbr> elements, and
+         `data-nesting-level="1"` restricts this to package rows - class and member rows are deeper and unaffected.
+         The untrimmed name stays in the row's aria-label, so screen readers still get the full package. */
+      .toc--part[data-nesting-level="1"] > .toc--row > a.toc--link > span:nth-of-type(-n+4) { display: none; }
+    </style>
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
+                    analysis-api
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+2.5.255-SNAPSHOT        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":analysis:analysis-api/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":analysis:analysis-api/main"
+                                       data-filter=":analysis:analysis-api/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    analysis-api
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="analysis-api::org.jetbrains.kotlin.analysis.api.types////PointingToDeclaration//1249159029">
+  <div class="breadcrumbs"><a href="../../index.html">analysis-api</a><span class="delimiter">/</span><span class="current">org.jetbrains.kotlin.analysis.api.types</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-649926271%2FClasslikes%2F1249159029" anchor-label="KaBuiltinFunctionTypeFamilies" id="-649926271%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-builtin-function-type-families/index.html"><span>Ka</span><wbr></wbr><span>Builtin</span><wbr></wbr><span>Function</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Families</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-649926271%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-builtin-function-type-families/index.html">KaBuiltinFunctionTypeFamilies</a></div><div class="brief "><p class="paragraph">Provides access to the four built-in <a href="-ka-function-type-family/index.html">function type families</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-693692620%2FClasslikes%2F1249159029" anchor-label="KaBuiltinTypes" id="-693692620%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-builtin-types/index.html"><span>Ka</span><wbr></wbr><span>Builtin</span><wbr></wbr><span><span>Types</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-693692620%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-builtin-types/index.html">KaBuiltinTypes</a> : <a href="../org.jetbrains.kotlin.analysis.api.lifetime/-ka-lifetime-owner/index.html">KaLifetimeOwner</a></div><div class="brief "><p class="paragraph"><a href="-ka-type/index.html">KaType</a> instances for built-in types.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2755246%2FClasslikes%2F1249159029" anchor-label="KaCapturedType" id="-2755246%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-captured-type/index.html"><span>Ka</span><wbr></wbr><span>Captured</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2755246%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-ka-captured-type/index.html">KaCapturedType</a> : <a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph"><a href="-ka-captured-type/index.html">KaCapturedType</a> represents a <a href="https://kotlinlang.org/spec/type-system.html#type-capturing">captured type</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1523909312%2FClasslikes%2F1249159029" anchor-label="KaClassErrorType" id="1523909312%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-class-error-type/index.html"><span>Ka</span><wbr></wbr><span>Class</span><wbr></wbr><span>Error</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1523909312%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-ka-class-error-type/index.html">KaClassErrorType</a> : <a href="-ka-error-type/index.html">KaErrorType</a></div><div class="brief "><p class="paragraph"><a href="-ka-class-error-type/index.html">KaClassErrorType</a> represents a class type that failed to resolve correctly.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2121328102%2FClasslikes%2F1249159029" anchor-label="KaClassType" id="2121328102%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-class-type/index.html"><span>Ka</span><wbr></wbr><span>Class</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2121328102%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-ka-class-type/index.html">KaClassType</a> : <a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph"><a href="-ka-class-type/index.html">KaClassType</a> represents a generic class type or a function type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1819647790%2FClasslikes%2F1249159029" anchor-label="KaClassTypeQualifier" id="-1819647790%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-class-type-qualifier/index.html"><span>Ka</span><wbr></wbr><span>Class</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Qualifier</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1819647790%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-ka-class-type-qualifier/index.html">KaClassTypeQualifier</a> : <a href="../org.jetbrains.kotlin.analysis.api.lifetime/-ka-lifetime-owner/index.html">KaLifetimeOwner</a></div><div class="brief "><p class="paragraph">A type qualifier is a segment in a multi-segment class type application.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1465417535%2FClasslikes%2F1249159029" anchor-label="KaDefinitelyNotNullType" id="-1465417535%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-definitely-not-null-type/index.html"><span>Ka</span><wbr></wbr><span>Definitely</span><wbr></wbr><span>Not</span><wbr></wbr><span>Null</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1465417535%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-ka-definitely-not-null-type/index.html">KaDefinitelyNotNullType</a> : <a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph"><a href="-ka-definitely-not-null-type/index.html">KaDefinitelyNotNullType</a> represents a <a href="https://kotlinlang.org/docs/generics.html#definitely-non-nullable-types">definitely not-null type</a>, such as <code class="lang-kotlin">T &amp; Any</code> for a type parameter <code class="lang-kotlin">T</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-156540225%2FClasslikes%2F1249159029" anchor-label="KaDynamicType" id="-156540225%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-dynamic-type/index.html"><span>Ka</span><wbr></wbr><span>Dynamic</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-156540225%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-ka-dynamic-type/index.html">KaDynamicType</a> : <a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph"><a href="-ka-dynamic-type/index.html">KaDynamicType</a> represents a <a href="https://kotlinlang.org/docs/dynamic-type.html">dynamic type</a>, which is used to support interoperability with dynamically typed libraries, platforms, or languages.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1566357674%2FClasslikes%2F1249159029" anchor-label="KaErrorType" id="-1566357674%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-error-type/index.html"><span>Ka</span><wbr></wbr><span>Error</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1566357674%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-error-type/index.html">KaErrorType</a> : <a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph"><a href="-ka-error-type/index.html">KaErrorType</a> represents a type that failed to resolve correctly.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-325253499%2FClasslikes%2F1249159029" anchor-label="KaFlexibleType" id="-325253499%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-flexible-type/index.html"><span>Ka</span><wbr></wbr><span>Flexible</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-325253499%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-ka-flexible-type/index.html">KaFlexibleType</a> : <a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph"><a href="-ka-flexible-type/index.html">KaFlexibleType</a> represents a <a href="https://kotlinlang.org/spec/type-system.html#flexible-types">flexible type</a> (or a so-called <a href="https://kotlinlang.org/docs/java-interop.html#null-safety-and-platform-types">platform type</a>), a range of types from the <a href="-ka-flexible-type/lower-bound.html">lowerBound</a> to the <a href="-ka-flexible-type/upper-bound.html">upperBound</a> (both inclusive).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="54320536%2FClasslikes%2F1249159029" anchor-label="KaFunctionType" id="54320536%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-function-type/index.html"><span>Ka</span><wbr></wbr><span>Function</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="54320536%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-ka-function-type/index.html">KaFunctionType</a> : <a href="-ka-class-type/index.html">KaClassType</a>, <a href="../org.jetbrains.kotlin.analysis.api.base/-ka-context-receivers-owner/index.html">KaContextReceiversOwner</a></div><div class="brief "><p class="paragraph"><a href="-ka-function-type/index.html">KaFunctionType</a> represents a Kotlin <a href="https://kotlinlang.org/docs/lambdas.html#function-types">function type</a>, such as <code class="lang-kotlin">(String) -&gt; Int</code> or <code class="lang-kotlin">suspend () -&gt; List&lt;Any&gt;</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1398597972%2FClasslikes%2F1249159029" anchor-label="KaFunctionTypeFamily" id="1398597972%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-function-type-family/index.html"><span>Ka</span><wbr></wbr><span>Function</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Family</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1398597972%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-function-type-family/index.html">KaFunctionTypeFamily</a></div><div class="brief "><p class="paragraph">Describes a family of numbered function types such as <code class="lang-kotlin">Function0</code>, <code class="lang-kotlin">Function1</code>, ..., <code class="lang-kotlin">FunctionN</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="16723994%2FClasslikes%2F1249159029" anchor-label="KaFunctionValueParameter" id="16723994%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-function-value-parameter/index.html"><span>Ka</span><wbr></wbr><span>Function</span><wbr></wbr><span>Value</span><wbr></wbr><span><span>Parameter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="16723994%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-ka-function-value-parameter/index.html">KaFunctionValueParameter</a> : <a href="../org.jetbrains.kotlin.analysis.api.lifetime/-ka-lifetime-owner/index.html">KaLifetimeOwner</a></div><div class="brief "><p class="paragraph">Represents a function value parameter</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1370471431%2FClasslikes%2F1249159029" anchor-label="KaIntersectionType" id="1370471431%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-intersection-type/index.html"><span>Ka</span><wbr></wbr><span>Intersection</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1370471431%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-ka-intersection-type/index.html">KaIntersectionType</a> : <a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph"><a href="-ka-intersection-type/index.html">KaIntersectionType</a> represents an <a href="https://kotlinlang.org/spec/type-system.html#intersection-types">intersection type</a>, such as <code class="lang-kotlin">A &amp; B</code>. Intersection types cannot be denoted in Kotlin code, but can result from some compiler operations, such as <a href="https://kotlinlang.org/spec/type-inference.html#smart-casts">smart casts</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="486234298%2FClasslikes%2F1249159029" anchor-label="KaResolvedClassTypeQualifier" id="486234298%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-resolved-class-type-qualifier/index.html"><span>Ka</span><wbr></wbr><span>Resolved</span><wbr></wbr><span>Class</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Qualifier</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="486234298%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-resolved-class-type-qualifier/index.html">KaResolvedClassTypeQualifier</a> : <a href="-ka-class-type-qualifier/index.html">KaClassTypeQualifier</a></div><div class="brief "><p class="paragraph">A <i>successfully resolved</i> <a href="-ka-class-type-qualifier/index.html">KaClassTypeQualifier</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="784922771%2FClasslikes%2F1249159029" anchor-label="KaStandardTypeClassIds" id="784922771%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-standard-type-class-ids/index.html"><span>Ka</span><wbr></wbr><span>Standard</span><wbr></wbr><span>Type</span><wbr></wbr><span>Class</span><wbr></wbr><span><span>Ids</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="784922771%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-ka-standard-type-class-ids/index.html">KaStandardTypeClassIds</a></div><div class="brief "><p class="paragraph">The object contains <span data-unresolved-link="org.jetbrains.kotlin.name/ClassId///PointingToDeclaration/">ClassId</span>s of well known Kotlin types.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-7300593%2FClasslikes%2F1249159029" anchor-label="KaStarTypeProjection" id="-7300593%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-star-type-projection/index.html"><span>Ka</span><wbr></wbr><span>Star</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Projection</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-7300593%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-star-type-projection/index.html">KaStarTypeProjection</a> : <a href="-ka-type-projection/index.html">KaTypeProjection</a></div><div class="brief "><p class="paragraph">Represents a <a href="https://kotlinlang.org/docs/generics.html#star-projections">star projection</a> (<code class="lang-kotlin">*</code>) used in type arguments. It indicates that the specific type argument is not important or unknown.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1768117290%2FClasslikes%2F1249159029" anchor-label="KaSubstitutor" id="1768117290%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-substitutor/index.html"><span>Ka</span><wbr></wbr><span><span>Substitutor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1768117290%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-substitutor/index.html">KaSubstitutor</a> : <a href="../org.jetbrains.kotlin.analysis.api.lifetime/-ka-lifetime-owner/index.html">KaLifetimeOwner</a></div><div class="brief "><p class="paragraph">A type substitutor which performs a substitution of type parameters inside a type to another type. The substitution can usually be represented as a map from type parameters to their corresponding substitution types.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1751931139%2FClasslikes%2F1249159029" anchor-label="KaSubstitutorBuilder" id="-1751931139%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-substitutor-builder/index.html"><span>Ka</span><wbr></wbr><span>Substitutor</span><wbr></wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1751931139%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-substitutor-builder/index.html">KaSubstitutorBuilder</a> : <a href="../org.jetbrains.kotlin.analysis.api.lifetime/-ka-lifetime-owner/index.html">KaLifetimeOwner</a></div><div class="brief "><p class="paragraph">A DSL builder for <a href="-ka-substitutor/index.html">KaSubstitutor</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1933751597%2FClasslikes%2F1249159029" anchor-label="KaSubtypingErrorTypePolicy" id="1933751597%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-subtyping-error-type-policy/index.html"><span>Ka</span><wbr></wbr><span>Subtyping</span><wbr></wbr><span>Error</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Policy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1933751597%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-ka-subtyping-error-type-policy/index.html">KaSubtypingErrorTypePolicy</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-ka-subtyping-error-type-policy/index.html">KaSubtypingErrorTypePolicy</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph"><a href="-ka-subtyping-error-type-policy/index.html">KaSubtypingErrorTypePolicy</a> determines the treatment of error types in type equality and subtyping checks.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1792828528%2FClasslikes%2F1249159029" anchor-label="KaType" id="-1792828528%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-type/index.html"><span>Ka</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1792828528%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-type/index.html">KaType</a> : <a href="../org.jetbrains.kotlin.analysis.api.lifetime/-ka-lifetime-owner/index.html">KaLifetimeOwner</a>, <a href="../org.jetbrains.kotlin.analysis.api.annotations/-ka-annotated/index.html">KaAnnotated</a></div><div class="brief "><p class="paragraph"><a href="-ka-type/index.html">KaType</a> represents a concrete Kotlin type, such as <code class="lang-kotlin">Int</code>, <code class="lang-kotlin">Foo</code> for a class <code class="lang-kotlin">Foo</code>, or <code class="lang-kotlin">Bar&lt;String&gt;</code> for a class <code class="lang-kotlin">Bar&lt;T&gt;</code>. It provides information about type structure, nullability, and annotations.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1402694588%2FClasslikes%2F1249159029" anchor-label="KaTypeArgumentWithVariance" id="1402694588%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-type-argument-with-variance/index.html"><span>Ka</span><wbr></wbr><span>Type</span><wbr></wbr><span>Argument</span><wbr></wbr><span>With</span><wbr></wbr><span><span>Variance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1402694588%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-type-argument-with-variance/index.html">KaTypeArgumentWithVariance</a> : <a href="-ka-type-projection/index.html">KaTypeProjection</a></div><div class="brief "><p class="paragraph">Represents a type argument with an explicit type and <a href="https://kotlinlang.org/docs/generics.html#use-site-variance-type-projections">variance</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1280870689%2FClasslikes%2F1249159029" anchor-label="KaTypeMappingMode" id="1280870689%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-type-mapping-mode/index.html"><span>Ka</span><wbr></wbr><span>Type</span><wbr></wbr><span>Mapping</span><wbr></wbr><span><span>Mode</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1280870689%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-ka-type-mapping-mode/index.html">KaTypeMappingMode</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-ka-type-mapping-mode/index.html">KaTypeMappingMode</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph"><a href="-ka-type-mapping-mode/index.html">KaTypeMappingMode</a> determines how a Kotlin type is mapped to a Java type when calling <a href="../org.jetbrains.kotlin.analysis.api.components/-ka-java-interoperability-component/as-psi-type.html">KaType.asPsiType</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-484737489%2FClasslikes%2F1249159029" anchor-label="KaTypeParameterType" id="-484737489%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-type-parameter-type/index.html"><span>Ka</span><wbr></wbr><span>Type</span><wbr></wbr><span>Parameter</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-484737489%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-ka-type-parameter-type/index.html">KaTypeParameterType</a> : <a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph"><a href="-ka-type-parameter-type/index.html">KaTypeParameterType</a> represents a type parameter type, such as <code class="lang-kotlin">T</code> in the declaration <code class="lang-kotlin">class Box&lt;T&gt;(val element: T)</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-539202443%2FClasslikes%2F1249159029" anchor-label="KaTypePointer" id="-539202443%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-type-pointer/index.html"><span>Ka</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Pointer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-539202443%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-type-pointer/index.html">KaTypePointer</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-ka-type-pointer/index.html">T</a><span class="token operator"> : </span><a href="-ka-type/index.html">KaType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph"><a href="-ka-type-pointer/index.html">KaTypePointer</a> allows to point to a <a href="-ka-type/index.html">KaType</a> and later retrieve it in another <a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a>. A pointer is necessary because <a href="-ka-type/index.html">KaType</a>s cannot be shared past the boundaries of the <a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a> they were created in, as they are valid only there.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2104153409%2FClasslikes%2F1249159029" anchor-label="KaTypeProjection" id="2104153409%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-type-projection/index.html"><span>Ka</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Projection</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2104153409%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-ka-type-projection/index.html">KaTypeProjection</a> : <a href="../org.jetbrains.kotlin.analysis.api.lifetime/-ka-lifetime-owner/index.html">KaLifetimeOwner</a></div><div class="brief "><p class="paragraph"><a href="-ka-type-projection/index.html">KaTypeProjection</a> represents a type argument used in the context of a class or function type. It provides information about the type and its variance.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1009278673%2FClasslikes%2F1249159029" anchor-label="KaUnificationSubstitutorPolicy" id="-1009278673%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-unification-substitutor-policy/index.html"><span>Ka</span><wbr></wbr><span>Unification</span><wbr></wbr><span>Substitutor</span><wbr></wbr><span><span>Policy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1009278673%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-ka-unification-substitutor-policy/index.html">KaUnificationSubstitutorPolicy</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-ka-unification-substitutor-policy/index.html">KaUnificationSubstitutorPolicy</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph"><a href="-ka-unification-substitutor-policy/index.html">KaUnificationSubstitutorPolicy</a> determines the way unification <a href="-ka-substitutor/index.html">KaSubstitutor</a>s are created in <a href="create-subtyping-unification-substitutor.html">createSubtypingUnificationSubstitutor</a>. Note that the policy only affects the construction when at least one of the involved types is generic, i.e., depends on a type parameter.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1406039231%2FClasslikes%2F1249159029" anchor-label="KaUnresolvedClassTypeQualifier" id="-1406039231%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-unresolved-class-type-qualifier/index.html"><span>Ka</span><wbr></wbr><span>Unresolved</span><wbr></wbr><span>Class</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Qualifier</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1406039231%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-ka-unresolved-class-type-qualifier/index.html">KaUnresolvedClassTypeQualifier</a> : <a href="-ka-class-type-qualifier/index.html">KaClassTypeQualifier</a></div><div class="brief "><p class="paragraph">An <i>unresolved</i> <a href="-ka-class-type-qualifier/index.html">KaClassTypeQualifier</a> due to a type error.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1900831398%2FClasslikes%2F1249159029" anchor-label="KaUsualClassType" id="-1900831398%2FClasslikes%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-usual-class-type/index.html"><span>Ka</span><wbr></wbr><span>Usual</span><wbr></wbr><span>Class</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1900831398%2FClasslikes%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-subclass-opt-in-required/index.html"><span class="token annotation builtin">SubclassOptInRequired</span></a><span class="token punctuation">(</span><span>markerClass<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="../org.jetbrains.kotlin.analysis.api/-ka-implementation-detail/index.html">KaImplementationDetail::class</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-ka-usual-class-type/index.html">KaUsualClassType</a> : <a href="-ka-class-type/index.html">KaClassType</a></div><div class="brief "><p class="paragraph"><a href="-ka-usual-class-type/index.html">KaUsualClassType</a> represents a generic class type, such as <code class="lang-kotlin">String</code> or <code class="lang-kotlin">List&lt;Int&gt;</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-1445468990%2FProperties%2F1249159029" anchor-label="abbreviationOrSelf" id="-1445468990%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="abbreviation-or-self.html"><span>abbreviation</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Self</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1445468990%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="abbreviation-or-self.html">abbreviationOrSelf</a><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">The <a href="-ka-type/index.html">KaType</a>'s <a href="-ka-type/abbreviation.html">abbreviated type</a>, or the type itself if it doesn't have an abbreviated type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="282777626%2FProperties%2F1249159029" anchor-label="allSupertypes" id="282777626%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="all-supertypes.html"><span>all</span><wbr></wbr><span><span>Supertypes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="282777626%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="all-supertypes.html">allSupertypes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.sequences/-sequence/index.html">Sequence</a><span class="token operator">&lt;</span><a href="-ka-type/index.html">KaType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">All supertypes of the given <a href="-ka-type/index.html">KaType</a>. The resulting sequence is ordered by a breadth-first traversal of the class hierarchy, without duplicates.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="70602112%2FProperties%2F1249159029" anchor-label="arrayElementType" id="70602112%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="array-element-type.html"><span>array</span><wbr></wbr><span>Element</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="70602112%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="array-element-type.html">arrayElementType</a><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The array type's element type if the given <a href="-ka-type/index.html">KaType</a> is a primitive type array or <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a>, and <code class="lang-kotlin">null</code> otherwise.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-955525912%2FProperties%2F1249159029" anchor-label="augmentedByWarningLevelAnnotations" id="-955525912%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="augmented-by-warning-level-annotations.html"><span>augmented</span><wbr></wbr><span>By</span><wbr></wbr><span>Warning</span><wbr></wbr><span>Level</span><wbr></wbr><span><span>Annotations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-955525912%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="augmented-by-warning-level-annotations.html">augmentedByWarningLevelAnnotations</a><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">A <a href="-ka-type/index.html">KaType</a> derived from the given type by enforcing warning-level nullability annotations. If the derived type doesn't differ from the original type, the original type is used.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1654527586%2FProperties%2F1249159029" anchor-label="builtinFunctionTypeFamilies" id="1654527586%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="builtin-function-type-families.html"><span>builtin</span><wbr></wbr><span>Function</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Families</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1654527586%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="builtin-function-type-families.html">builtinFunctionTypeFamilies</a><span class="token operator">: </span><a href="-ka-builtin-function-type-families/index.html">KaBuiltinFunctionTypeFamilies</a></div><div class="brief "><p class="paragraph">Provides access to the built-in <a href="-ka-function-type-family/index.html">function type families</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1672044871%2FProperties%2F1249159029" anchor-label="builtinTypes" id="1672044871%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="builtin-types.html"><span>builtin</span><wbr></wbr><span><span>Types</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1672044871%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="builtin-types.html">builtinTypes</a><span class="token operator">: </span><a href="-ka-builtin-types/index.html">KaBuiltinTypes</a></div><div class="brief "><p class="paragraph"><a href="-ka-type/index.html">KaType</a> instances for built-in types.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1078335430%2FProperties%2F1249159029" anchor-label="classId" id="1078335430%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="class-id.html"><span>class</span><wbr></wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1078335430%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="class-id.html">classId</a><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.name/ClassId///PointingToDeclaration/">ClassId</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The <span data-unresolved-link="org.jetbrains.kotlin.name/ClassId///PointingToDeclaration/">ClassId</span> provided the type exposes any (it is the case for <a href="-ka-class-type/index.html">KaClassType</a>).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1742612248%2FProperties%2F1249159029" anchor-label="commonSupertype" id="1742612248%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="common-supertype.html"><span>common</span><wbr></wbr><span><span>Supertype</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1742612248%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="-ka-type/index.html">KaType</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="common-supertype.html">commonSupertype</a><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="-ka-type/index.html">KaType</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="common-supertype.html">commonSupertype</a><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">The common supertype of the given <a href="-ka-type/index.html">KaType</a>s.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-783592228%2FProperties%2F1249159029" anchor-label="defaultInitializer" id="-783592228%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-initializer.html"><span>default</span><wbr></wbr><span><span>Initializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-783592228%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="default-initializer.html">defaultInitializer</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The default initializer for the given <a href="-ka-type/index.html">KaType</a>, or <code class="lang-kotlin">null</code> if the type is neither nullable, a primitive, nor a string.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-544405541%2FProperties%2F1249159029" anchor-label="defaultType" id="-544405541%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-type.html"><span>default</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-544405541%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-classifier-symbol/index.html">KaClassifierSymbol</a><span class="token punctuation">.</span><a href="default-type.html">defaultType</a><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">The representation of <a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-classifier-symbol/index.html">this</a> in terms of <a href="-ka-type/index.html">KaType</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="411684393%2FProperties%2F1249159029" anchor-label="defaultTypeWithStarProjections" id="411684393%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-type-with-star-projections.html"><span>default</span><wbr></wbr><span>Type</span><wbr></wbr><span>With</span><wbr></wbr><span>Star</span><wbr></wbr><span><span>Projections</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="411684393%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-classifier-symbol/index.html">KaClassifierSymbol</a><span class="token punctuation">.</span><a href="default-type-with-star-projections.html">defaultTypeWithStarProjections</a><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">The representation of <a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-classifier-symbol/index.html">this</a> in terms of <a href="-ka-type/index.html">KaType</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="119192278%2FProperties%2F1249159029" anchor-label="directSupertypes" id="119192278%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="direct-supertypes.html"><span>direct</span><wbr></wbr><span><span>Supertypes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="119192278%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="direct-supertypes.html">directSupertypes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.sequences/-sequence/index.html">Sequence</a><span class="token operator">&lt;</span><a href="-ka-type/index.html">KaType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The direct supertypes of the given <a href="-ka-type/index.html">KaType</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1610845060%2FProperties%2F1249159029" anchor-label="emptySubstitutor" id="-1610845060%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="empty-substitutor.html"><span>empty</span><wbr></wbr><span><span>Substitutor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1610845060%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="empty-substitutor.html">emptySubstitutor</a><span class="token operator">: </span><a href="-ka-substitutor/-empty/index.html">KaSubstitutor.Empty</a></div><div class="brief "><p class="paragraph">Creates <a href="-ka-substitutor/-empty/index.html">KaSubstitutor.Empty</a>, i.e., a substitutor without any mappings.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1861310988%2FProperties%2F1249159029" anchor-label="expandedSymbol" id="1861310988%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="expanded-symbol.html"><span>expanded</span><wbr></wbr><span><span>Symbol</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1861310988%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="expanded-symbol.html">expandedSymbol</a><span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-class-symbol/index.html">KaClassSymbol</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The class symbol backing the given <a href="-ka-type/index.html">KaType</a>, if available.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-107172292%2FProperties%2F1249159029" anchor-label="fullyExpandedType" id="-107172292%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="fully-expanded-type.html"><span>fully</span><wbr></wbr><span>Expanded</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-107172292%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="fully-expanded-type.html">fullyExpandedType</a><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">The type that corresponds to the given <a href="-ka-type/index.html">KaType</a> with fully expanded type aliases.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2134462617%2FProperties%2F1249159029" anchor-label="functionTypeFamily" id="-2134462617%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="function-type-family.html"><span>function</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Family</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2134462617%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="function-type-family.html">functionTypeFamily</a><span class="token operator">: </span><a href="-ka-function-type-family/index.html">KaFunctionTypeFamily</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The <a href="-ka-function-type-family/index.html">function type family</a> of the given <a href="-ka-type/index.html">KaType</a>, or <code class="lang-kotlin">null</code> if the type is not a function type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="562467487%2FProperties%2F1249159029" anchor-label="hasFlexibleNullability" id="562467487%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-flexible-nullability.html"><span>has</span><wbr></wbr><span>Flexible</span><wbr></wbr><span><span>Nullability</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="562467487%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="has-flexible-nullability.html">hasFlexibleNullability</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the <a href="-ka-type/index.html">KaType</a> is a <a href="-ka-flexible-type/index.html">org.jetbrains.kotlin.analysis.api.types.KaFlexibleType</a> / <a href="-ka-dynamic-type/index.html">org.jetbrains.kotlin.analysis.api.types.KaDynamicType</a> with flexible nullability or <a href="-ka-error-type/index.html">org.jetbrains.kotlin.analysis.api.types.KaErrorType</a> with unknown nullability. Both safe and ordinary calls are valid on such types.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1310974197%2FProperties%2F1249159029" anchor-label="isArrayOrPrimitiveArray" id="1310974197%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-array-or-primitive-array.html"><span>is</span><wbr></wbr><span>Array</span><wbr></wbr><span>Or</span><wbr></wbr><span>Primitive</span><wbr></wbr><span><span>Array</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1310974197%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-array-or-primitive-array.html">isArrayOrPrimitiveArray</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the <a href="-ka-type/index.html">KaType</a> is an array or a primitive array type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1749141481%2FProperties%2F1249159029" anchor-label="isDenotable" id="-1749141481%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-denotable.html"><span>is</span><wbr></wbr><span><span>Denotable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1749141481%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-denotable.html">isDenotable</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the <a href="-ka-type/index.html">KaType</a> is denotable. A <a href="https://kotlinlang.org/spec/type-system.html#type-kinds">denotable type</a> can be expressed in Kotlin code, as opposed to being only constructible via compiler type operations (such as type inference).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1563465107%2FProperties%2F1249159029" anchor-label="isFunctionalInterface" id="-1563465107%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-functional-interface.html"><span>is</span><wbr></wbr><span>Functional</span><wbr></wbr><span><span>Interface</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1563465107%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-functional-interface.html">isFunctionalInterface</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the <a href="-ka-type/index.html">KaType</a> is a <a href="https://kotlinlang.org/docs/fun-interfaces.html">functional interface type</a>, such as <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html">Runnable</a>. Such types are also known as SAM types.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="71081569%2FProperties%2F1249159029" anchor-label="isFunctionType" id="71081569%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-function-type.html"><span>is</span><wbr></wbr><span>Function</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="71081569%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-function-type.html">isFunctionType</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the <a href="-ka-type/index.html">KaType</a> is a <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-function/index.html">kotlin.Function</a> type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-836980666%2FProperties%2F1249159029" anchor-label="isKFunctionType" id="-836980666%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-k-function-type.html"><span>is</span><wbr></wbr><span>KFunction</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-836980666%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-k-function-type.html">isKFunctionType</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the <a href="-ka-type/index.html">KaType</a> is a <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-function/index.html">kotlin.reflect.KFunction</a> type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1113577776%2FProperties%2F1249159029" anchor-label="isKSuspendFunctionType" id="-1113577776%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-k-suspend-function-type.html"><span>is</span><wbr></wbr><span>KSuspend</span><wbr></wbr><span>Function</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1113577776%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-k-suspend-function-type.html">isKSuspendFunctionType</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the <a href="-ka-type/index.html">KaType</a> is a <code class="lang-kotlin">KSuspendFunction</code> type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1543642118%2FProperties%2F1249159029" anchor-label="isMarkedNullable" id="1543642118%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-marked-nullable.html"><span>is</span><wbr></wbr><span>Marked</span><wbr></wbr><span><span>Nullable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1543642118%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-marked-nullable.html">isMarkedNullable</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the <a href="-ka-type/index.html">KaType</a> is explicitly marked as nullable, i.e., is represented as <code class="lang-kotlin">T?</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1052323265%2FProperties%2F1249159029" anchor-label="isNestedArray" id="1052323265%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-nested-array.html"><span>is</span><wbr></wbr><span>Nested</span><wbr></wbr><span><span>Array</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1052323265%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-nested-array.html">isNestedArray</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the <a href="-ka-type/index.html">KaType</a> is an array or a primitive array type, and its element is also an array type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1998095826%2FProperties%2F1249159029" anchor-label="isNullable" id="1998095826%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-nullable.html"><span>is</span><wbr></wbr><span><span>Nullable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1998095826%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-nullable.html">isNullable</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether a public value of the <a href="-ka-type/index.html">KaType</a> can potentially be <code class="lang-kotlin">null</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2095565739%2FProperties%2F1249159029" anchor-label="isSuspendFunctionType" id="-2095565739%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-suspend-function-type.html"><span>is</span><wbr></wbr><span>Suspend</span><wbr></wbr><span>Function</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2095565739%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-suspend-function-type.html">isSuspendFunctionType</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the <a href="-ka-type/index.html">KaType</a> is a <a href="https://kotlinlang.org/spec/asynchronous-programming-with-coroutines.html#suspending-functions">suspend function</a> type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1410007618%2FProperties%2F1249159029" anchor-label="receiverType" id="-1410007618%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="receiver-type.html"><span>receiver</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1410007618%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><span data-unresolved-link="org.jetbrains.kotlin.psi/KtDoubleColonExpression///PointingToDeclaration/">KtDoubleColonExpression</span><span class="token punctuation">.</span><a href="receiver-type.html">receiverType</a><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Resolves the given <span data-unresolved-link="org.jetbrains.kotlin.psi/KtDoubleColonExpression///PointingToDeclaration/">KtDoubleColonExpression</span> to the <a href="-ka-type/index.html">KaType</a> of its receiver.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1378411897%2FProperties%2F1249159029" anchor-label="symbol" id="-1378411897%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="symbol.html"><span><span>symbol</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1378411897%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="symbol.html">symbol</a><span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-class-like-symbol/index.html">KaClassLikeSymbol</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">A <a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-class-like-symbol/index.html">KaClassLikeSymbol</a> for this <a href="-ka-type/index.html">KaType</a> if the type represents a uniquely resolvable class/object/type alias.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1392537384%2FProperties%2F1249159029" anchor-label="type" id="-1392537384%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="type.html"><span><span>type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1392537384%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><span data-unresolved-link="org.jetbrains.kotlin.psi/KtTypeReference///PointingToDeclaration/">KtTypeReference</span><span class="token punctuation">.</span><a href="type.html">type</a><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">Resolves the given <span data-unresolved-link="org.jetbrains.kotlin.psi/KtTypeReference///PointingToDeclaration/">KtTypeReference</span> to its corresponding <a href="-ka-type/index.html">KaType</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1165317705%2FProperties%2F1249159029" anchor-label="varargArrayType" id="1165317705%2FProperties%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="vararg-array-type.html"><span>vararg</span><wbr></wbr><span>Array</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1165317705%2FProperties%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">val </span><a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-value-parameter-symbol/index.html">KaValueParameterSymbol</a><span class="token punctuation">.</span><a href="vararg-array-type.html">varargArrayType</a><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The array type that represents the list of arguments passed to this parameter if <a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-value-parameter-symbol/index.html">this</a> is a <a href="https://kotlinlang.org/docs/functions.html#variable-number-of-arguments-varargs">vararg</a> parameter.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1899334111%2FFunctions%2F1249159029" anchor-label="allSupertypes" id="1899334111%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="all-supertypes.html"><span>all</span><wbr></wbr><span><span>Supertypes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1899334111%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="all-supertypes.html"><span class="token function">allSupertypes</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shouldApproximate<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.sequences/-sequence/index.html">Sequence</a><span class="token operator">&lt;</span><a href="-ka-type/index.html">KaType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns all supertypes of the given <a href="-ka-type/index.html">KaType</a>. The resulting sequence is ordered by a breadth-first traversal of the class hierarchy, without duplicates.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1681380892%2FFunctions%2F1249159029" anchor-label="approximateToDenotableSubtype" id="1681380892%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="approximate-to-denotable-subtype.html"><span>approximate</span><wbr></wbr><span>To</span><wbr></wbr><span>Denotable</span><wbr></wbr><span><span>Subtype</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1681380892%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="approximate-to-denotable-subtype.html"><span class="token function">approximateToDenotableSubtype</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Approximates <a href="-ka-type/index.html">KaType</a> to a <a href="../org.jetbrains.kotlin.analysis.api.components/-ka-type-information-provider/is-denotable.html">denotable</a> subtype.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="708119821%2FFunctions%2F1249159029" anchor-label="approximateToDenotableSubtypeOrSelf" id="708119821%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="approximate-to-denotable-subtype-or-self.html"><span>approximate</span><wbr></wbr><span>To</span><wbr></wbr><span>Denotable</span><wbr></wbr><span>Subtype</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Self</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="708119821%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="approximate-to-denotable-subtype-or-self.html"><span class="token function">approximateToDenotableSubtypeOrSelf</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">Approximates <a href="-ka-type/index.html">KaType</a> to a <a href="../org.jetbrains.kotlin.analysis.api.components/-ka-type-information-provider/is-denotable.html">denotable</a> subtype, or returns the given type itself if it is already denotable.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1190691783%2FFunctions%2F1249159029" anchor-label="approximateToDenotableSupertype" id="1190691783%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="approximate-to-denotable-supertype.html"><span>approximate</span><wbr></wbr><span>To</span><wbr></wbr><span>Denotable</span><wbr></wbr><span><span>Supertype</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1190691783%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="approximate-to-denotable-supertype.html"><span class="token function">approximateToDenotableSupertype</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">allowLocalDenotableTypes<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Approximates <a href="-ka-type/index.html">KaType</a> to a <a href="../org.jetbrains.kotlin.analysis.api.components/-ka-type-information-provider/is-denotable.html">denotable</a> supertype.</p></div><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="approximate-to-denotable-supertype.html"><span class="token function">approximateToDenotableSupertype</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.psi/KtElement///PointingToDeclaration/">KtElement</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Approximates <a href="-ka-type/index.html">KaType</a> to a <a href="../org.jetbrains.kotlin.analysis.api.components/-ka-type-information-provider/is-denotable.html">denotable</a> supertype based on the given <a href="approximate-to-denotable-supertype.html">position</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1816830105%2FFunctions%2F1249159029" anchor-label="approximateToDenotableSupertypeOrSelf" id="-1816830105%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="approximate-to-denotable-supertype-or-self.html"><span>approximate</span><wbr></wbr><span>To</span><wbr></wbr><span>Denotable</span><wbr></wbr><span>Supertype</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Self</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1816830105%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="approximate-to-denotable-supertype-or-self.html"><span class="token function">approximateToDenotableSupertypeOrSelf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">allowLocalDenotableTypes<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">Approximates <a href="-ka-type/index.html">KaType</a> to a <a href="../org.jetbrains.kotlin.analysis.api.components/-ka-type-information-provider/is-denotable.html">denotable</a> supertype, or returns the given type itself if it is already denotable.</p></div><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="approximate-to-denotable-supertype-or-self.html"><span class="token function">approximateToDenotableSupertypeOrSelf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.psi/KtElement///PointingToDeclaration/">KtElement</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">Approximates <a href="-ka-type/index.html">KaType</a> to a <a href="../org.jetbrains.kotlin.analysis.api.components/-ka-type-information-provider/is-denotable.html">denotable</a> subtype based on the given <a href="approximate-to-denotable-supertype-or-self.html">position</a>, or returns the given type itself if it is already denotable.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1927572121%2FFunctions%2F1249159029" anchor-label="buildSubstitutor" id="-1927572121%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="build-substitutor.html"><span>build</span><wbr></wbr><span><span>Substitutor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1927572121%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="build-substitutor.html"><span class="token function">buildSubstitutor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">build<span class="token operator">: </span><a href="-ka-substitutor-builder/index.html">KaSubstitutorBuilder</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-substitutor/index.html">KaSubstitutor</a></div><div class="brief "><p class="paragraph">Builds a new <a href="-ka-substitutor/index.html">KaSubstitutor</a> from substitutions specified inside <a href="build-substitutor.html">build</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1706461174%2FFunctions%2F1249159029" anchor-label="createInheritanceTypeSubstitutor" id="1706461174%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-inheritance-type-substitutor.html"><span>create</span><wbr></wbr><span>Inheritance</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Substitutor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1706461174%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="create-inheritance-type-substitutor.html"><span class="token function">createInheritanceTypeSubstitutor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">subClass<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-class-symbol/index.html">KaClassSymbol</a><span class="token punctuation">, </span></span><span class="parameter ">superClass<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-class-symbol/index.html">KaClassSymbol</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-substitutor/index.html">KaSubstitutor</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Creates a <a href="-ka-substitutor/index.html">KaSubstitutor</a> based on the inheritance relationship between <a href="create-inheritance-type-substitutor.html">subClass</a> and <a href="create-inheritance-type-substitutor.html">superClass</a>. <a href="create-inheritance-type-substitutor.html">subClass</a> must inherit from <a href="create-inheritance-type-substitutor.html">superClass</a> and there may not be any error types in the inheritance path. Otherwise, <code class="lang-kotlin">null</code> is returned.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-873777864%2FFunctions%2F1249159029" anchor-label="createSubstitutor" id="-873777864%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-substitutor.html"><span>create</span><wbr></wbr><span><span>Substitutor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-873777864%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="create-substitutor.html"><span class="token function">createSubstitutor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mappings<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-type-parameter-symbol/index.html">KaTypeParameterSymbol</a><span class="token punctuation">, </span><a href="-ka-type/index.html">KaType</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-substitutor/index.html">KaSubstitutor</a></div><div class="brief "><p class="paragraph">Creates a <a href="-ka-substitutor/index.html">KaSubstitutor</a> based on the given <a href="create-substitutor.html">mappings</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="685052395%2FFunctions%2F1249159029" anchor-label="createSubtypingUnificationSubstitutor" id="685052395%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-subtyping-unification-substitutor.html"><span>create</span><wbr></wbr><span>Subtyping</span><wbr></wbr><span>Unification</span><wbr></wbr><span><span>Substitutor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="685052395%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="create-subtyping-unification-substitutor.html"><span class="token function">createSubtypingUnificationSubstitutor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">leftTypesToRightTypes<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">, </span><a href="-ka-type/index.html">KaType</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">isFreeTypeParameter<span class="token operator">: </span><span class="token punctuation">(</span><a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-type-parameter-symbol/index.html">KaTypeParameterSymbol</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-substitutor/index.html">KaSubstitutor</a><span class="token operator">?</span></div><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="create-subtyping-unification-substitutor.html"><span class="token function">createSubtypingUnificationSubstitutor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">leftTypesToRightTypes<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">, </span><a href="-ka-type/index.html">KaType</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">constructionPolicy<span class="token operator">: </span><a href="-ka-unification-substitutor-policy/index.html">KaUnificationSubstitutorPolicy</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-substitutor/index.html">KaSubstitutor</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Creates a <a href="-ka-substitutor/index.html">KaSubstitutor</a> which assigns type arguments such that, for each pair in <a href="create-subtyping-unification-substitutor.html">leftTypesToRightTypes</a>, the substituted left type is a subtype of the substituted right type. Returns <code class="lang-kotlin">null</code> if such an assignment is not possible.</p></div><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="create-subtyping-unification-substitutor.html"><span class="token function">createSubtypingUnificationSubstitutor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">leftType<span class="token operator">: </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">, </span></span><span class="parameter ">rightType<span class="token operator">: </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">, </span></span><span class="parameter ">constructionPolicy<span class="token operator">: </span><a href="-ka-unification-substitutor-policy/index.html">KaUnificationSubstitutorPolicy</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-substitutor/index.html">KaSubstitutor</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Creates a <a href="-ka-substitutor/index.html">KaSubstitutor</a> which assigns type arguments such that the substituted <a href="create-subtyping-unification-substitutor.html">leftType</a> is a subtype of the substituted <a href="create-subtyping-unification-substitutor.html">rightType</a>. Returns <code class="lang-kotlin">null</code> if such an assignment is not possible.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1104940133%2FFunctions%2F1249159029" anchor-label="directSupertypes" id="-1104940133%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="direct-supertypes.html"><span>direct</span><wbr></wbr><span><span>Supertypes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1104940133%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="direct-supertypes.html"><span class="token function">directSupertypes</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shouldApproximate<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.sequences/-sequence/index.html">Sequence</a><span class="token operator">&lt;</span><a href="-ka-type/index.html">KaType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the direct supertypes of the given <a href="-ka-type/index.html">KaType</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-292755262%2FFunctions%2F1249159029" anchor-label="hasCommonSubtypeWith" id="-292755262%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-common-subtype-with.html"><span>has</span><wbr></wbr><span>Common</span><wbr></wbr><span>Subtype</span><wbr></wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-292755262%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="has-common-subtype-with.html"><span class="token function">hasCommonSubtypeWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">that<span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks whether this <a href="-ka-type/index.html">KaType</a> is compatible with <a href="has-common-subtype-with.html">that</a> other type. If they are compatible, the types can have a common subtype.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1285631668%2FFunctions%2F1249159029" anchor-label="isSubtypeOf" id="-1285631668%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-subtype-of.html"><span>is</span><wbr></wbr><span>Subtype</span><wbr></wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1285631668%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-subtype-of.html"><span class="token function">isSubtypeOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">symbol<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-class-like-symbol/index.html">KaClassLikeSymbol</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-subtype-of.html"><span class="token function">isSubtypeOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">symbol<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api.symbols/-ka-class-like-symbol/index.html">KaClassLikeSymbol</a><span class="token punctuation">, </span></span><span class="parameter ">errorTypePolicy<span class="token operator">: </span><a href="-ka-subtyping-error-type-policy/index.html">KaSubtypingErrorTypePolicy</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns whether this <a href="-ka-type/index.html">KaType</a> is a subtype of a class represented by <a href="is-subtype-of.html">symbol</a>.</p></div><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-subtype-of.html"><span class="token function">isSubtypeOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">supertype<span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-subtype-of.html"><span class="token function">isSubtypeOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">supertype<span class="token operator">: </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">, </span></span><span class="parameter ">errorTypePolicy<span class="token operator">: </span><a href="-ka-subtyping-error-type-policy/index.html">KaSubtypingErrorTypePolicy</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns whether this <a href="-ka-type/index.html">KaType</a> is a subtype of <a href="is-subtype-of.html">supertype</a>. The relation is non-strict, i.e. any type <code class="lang-kotlin">t</code> is a subtype of itself.</p></div><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-subtype-of.html"><span class="token function">isSubtypeOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">classId<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.name/ClassId///PointingToDeclaration/">ClassId</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="is-subtype-of.html"><span class="token function">isSubtypeOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">classId<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.name/ClassId///PointingToDeclaration/">ClassId</span><span class="token punctuation">, </span></span><span class="parameter ">errorTypePolicy<span class="token operator">: </span><a href="-ka-subtyping-error-type-policy/index.html">KaSubtypingErrorTypePolicy</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns whether this <a href="-ka-type/index.html">KaType</a> is a subtype of a class called <a href="is-subtype-of.html">classId</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1579958488%2FFunctions%2F1249159029" anchor-label="lowerBoundIfFlexible" id="1579958488%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="lower-bound-if-flexible.html"><span>lower</span><wbr></wbr><span>Bound</span><wbr></wbr><span>If</span><wbr></wbr><span><span>Flexible</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1579958488%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="lower-bound-if-flexible.html"><span class="token function">lowerBoundIfFlexible</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">Returns the <a href="-ka-flexible-type/index.html">KaFlexibleType</a>'s lower bound, or the type itself if it is not flexible.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="69683932%2FFunctions%2F1249159029" anchor-label="restore" id="69683932%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="restore.html"><span><span>restore</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="69683932%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="restore.html">T</a><span class="token operator"> : </span><a href="-ka-type/index.html">KaType</a><span class="token operator">&gt; </span><a href="-ka-type-pointer/index.html">KaTypePointer</a><span class="token operator">&lt;</span><a href="restore.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="restore.html"><span class="token function">restore</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="restore.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Returns the restored <a href="-ka-type/index.html">KaType</a> (possibly a new type instance) if the pointer is still valid, or <code class="lang-kotlin">null</code> otherwise.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="758267216%2FFunctions%2F1249159029" anchor-label="semanticallyEquals" id="758267216%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="semantically-equals.html"><span>semantically</span><wbr></wbr><span><span>Equals</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="758267216%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="semantically-equals.html"><span class="token function">semanticallyEquals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="semantically-equals.html"><span class="token function">semanticallyEquals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">, </span></span><span class="parameter ">errorTypePolicy<span class="token operator">: </span><a href="-ka-subtyping-error-type-policy/index.html">KaSubtypingErrorTypePolicy</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns whether this <a href="-ka-type/index.html">KaType</a> is semantically equal to <a href="semantically-equals.html">other</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1499429433%2FFunctions%2F1249159029" anchor-label="upperBoundIfFlexible" id="1499429433%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="upper-bound-if-flexible.html"><span>upper</span><wbr></wbr><span>Bound</span><wbr></wbr><span>If</span><wbr></wbr><span><span>Flexible</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1499429433%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="upper-bound-if-flexible.html"><span class="token function">upperBoundIfFlexible</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">Returns the <a href="-ka-flexible-type/index.html">KaFlexibleType</a>'s upper bound, or the type itself if it is not flexible.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-216598687%2FFunctions%2F1249159029" anchor-label="withNullability" id="-216598687%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-nullability.html"><span>with</span><wbr></wbr><span><span>Nullability</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-216598687%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">context</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../org.jetbrains.kotlin.analysis.api/-ka-session/index.html">KaSession</a></span></span><span class="token punctuation">)</span><br><span class="token keyword">fun </span><a href="-ka-type/index.html">KaType</a><span class="token punctuation">.</span><a href="with-nullability.html"><span class="token function">withNullability</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">isMarkedNullable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-ka-type/index.html">KaType</a></div><div class="brief "><p class="paragraph">Creates a new <a href="-ka-type/index.html">KaType</a> based on the given type with the updated nullability specified by <a href="with-nullability.html">isMarkedNullable</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

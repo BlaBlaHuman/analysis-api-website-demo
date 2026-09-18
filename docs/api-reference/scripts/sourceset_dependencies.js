@@ -1,0 +1,1 @@
+sourceset_dependencies='{":analysis:analysis-api/main":[]}'

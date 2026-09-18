@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>KaResolveExtensionFile</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>if (window.self !== window.top) document.documentElement.classList.add("framed")</script>
+    <style>
+      html.framed #navigation-wrapper { display: none !important; }
+      html.framed #container { top: 0 !important; }
+
+      /* Sidebar package rows all start with the same four segments (org. jetbrains. kotlin. analysis.), which pushes
+         the meaningful part off the edge. Dokka wraps each segment in its own <span> for line-breaking, so the shared
+         prefix can simply be hidden. `nth-of-type` counts spans only, ignoring the interleaved <wbr> elements, and
+         `data-nesting-level="1"` restricts this to package rows - class and member rows are deeper and unaffected.
+         The untrimmed name stays in the row's aria-label, so screen readers still get the full package. */
+      .toc--part[data-nesting-level="1"] > .toc--row > a.toc--link > span:nth-of-type(-n+4) { display: none; }
+    </style>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    analysis-api
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+2.5.255-SNAPSHOT        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":analysis:analysis-api/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":analysis:analysis-api/main"
+                                       data-filter=":analysis:analysis-api/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    analysis-api
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="analysis-api::org.jetbrains.kotlin.analysis.api.resolve.extensions/KaResolveExtensionFile///PointingToDeclaration//1249159029">
+  <div class="breadcrumbs"><a href="../../../index.html">analysis-api</a><span class="delimiter">/</span><a href="../index.html">org.jetbrains.kotlin.analysis.api.resolve.extensions</a><span class="delimiter">/</span><span class="current">KaResolveExtensionFile</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Ka</span><wbr></wbr><span>Resolve</span><wbr></wbr><span>Extension</span><wbr></wbr><span><span>File</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">KaResolveExtensionFile</a></div><p class="paragraph">Represents a Kotlin file that contains generated declarations. It is provided by its <a href="../-ka-resolve-extension/index.html">resolve extension</a>.</p><p class="paragraph">The file content is built <i>lazily</i> with <a href="build-file-text.html">buildFileText</a>, which ensures that resolve extension files are only initialized when needed. The additional information provided by functions like <a href="get-file-package-name.html">getFilePackageName</a> and <a href="get-top-level-classifier-names.html">getTopLevelClassifierNames</a> is used to avoid building the resolve extension file's text unless absolutely necessary.</p><p class="paragraph">All member implementations should:</p><ul><li><p class="paragraph">Consider caching the results for subsequent invocations.</p></li><li><p class="paragraph">Be lightweight and avoid building the whole file structure eagerly.</p></li><li><p class="paragraph">Avoid using Kotlin resolution, as these functions are called during session initialization, so Analysis API access is forbidden.</p></li></ul><h4 class="tableheader">See also</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-ka-resolve-extension/index.html"><span>Ka</span><wbr></wbr><span>Resolve</span><wbr></wbr><span><span>Extension</span></span></a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="2050948716%2FConstructors%2F1249159029" anchor-label="KaResolveExtensionFile" id="2050948716%2FConstructors%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ka-resolve-extension-file.html"><span>Ka</span><wbr></wbr><span>Resolve</span><wbr></wbr><span>Extension</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2050948716%2FConstructors%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1761227346%2FFunctions%2F1249159029" anchor-label="buildFileText" id="1761227346%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="build-file-text.html"><span>build</span><wbr></wbr><span>File</span><wbr></wbr><span><span>Text</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1761227346%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="build-file-text.html"><span class="token function">buildFileText</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Builds the text of the generated Kotlin source file. It should be <i>valid</i> Kotlin code.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-490535066%2FFunctions%2F1249159029" anchor-label="createNavigationTargetsProvider" id="-490535066%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-navigation-targets-provider.html"><span>create</span><wbr></wbr><span>Navigation</span><wbr></wbr><span>Targets</span><wbr></wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-490535066%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="create-navigation-targets-provider.html"><span class="token function">createNavigationTargetsProvider</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-ka-resolve-extension-navigation-targets-provider/index.html">KaResolveExtensionNavigationTargetsProvider</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-ka-resolve-extension-navigation-targets-provider/index.html">KaResolveExtensionNavigationTargetsProvider</a> for this <a href="index.html">KaResolveExtensionFile</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1714705972%2FFunctions%2F1249159029" anchor-label="getFileName" id="-1714705972%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-file-name.html"><span>get</span><wbr></wbr><span>File</span><wbr></wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1714705972%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-file-name.html"><span class="token function">getFileName</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The name of the Kotlin file which will be generated. It should have the <code class="lang-kotlin">.kt</code> extension.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="617578866%2FFunctions%2F1249159029" anchor-label="getFilePackageName" id="617578866%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-file-package-name.html"><span>get</span><wbr></wbr><span>File</span><wbr></wbr><span>Package</span><wbr></wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="617578866%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-file-package-name.html"><span class="token function">getFilePackageName</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span></div><div class="brief "><p class="paragraph">The <span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span> of the package that the resolve extension file belongs to.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-995305018%2FFunctions%2F1249159029" anchor-label="getTopLevelCallableNames" id="-995305018%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-top-level-callable-names.html"><span>get</span><wbr></wbr><span>Top</span><wbr></wbr><span>Level</span><wbr></wbr><span>Callable</span><wbr></wbr><span><span>Names</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-995305018%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-top-level-callable-names.html"><span class="token function">getTopLevelCallableNames</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span data-unresolved-link="org.jetbrains.kotlin.name/Name///PointingToDeclaration/">Name</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the set of top-level callable names (functions and properties) in the file. It must contain all such names in the package, but may contain additional false positives.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1717294289%2FFunctions%2F1249159029" anchor-label="getTopLevelClassifierNames" id="-1717294289%2FFunctions%2F1249159029" data-filterable-set=":analysis:analysis-api/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":analysis:analysis-api/main" data-filterable-set=":analysis:analysis-api/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-top-level-classifier-names.html"><span>get</span><wbr></wbr><span>Top</span><wbr></wbr><span>Level</span><wbr></wbr><span>Classifier</span><wbr></wbr><span><span>Names</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1717294289%2FFunctions%2F1249159029"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":analysis:analysis-api/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-top-level-classifier-names.html"><span class="token function">getTopLevelClassifierNames</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span data-unresolved-link="org.jetbrains.kotlin.name/Name///PointingToDeclaration/">Name</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the set of top-level classifier names (classes, interfaces, objects, and type-aliases) in the file. It must contain all such names in the package, but may contain additional false positives.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
